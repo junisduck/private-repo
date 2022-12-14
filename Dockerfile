@@ -1,7 +1,7 @@
 FROM node:erbium-buster-slim
 
-LABEL "repository"="https://github.com/teichae/github-action"
-LABEL "maintainer"="tei.chae <tei.chae@kakao.com>"
+LABEL "repository"="https://github.com/jun-is-duck/private-repo"
+LABEL "maintainer"="junisduck <junisduck@gmail.com>"
 
 RUN set -eux ; \
     apt-get update -y; \
