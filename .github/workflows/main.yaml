@@ -47,7 +47,7 @@ jobs:
           file: ./Dockerfile
           platforms: linux/amd64
           load: true
-            #push: true
+          push: true
           tags: ${{ steps.docker_meta.outputs.tags }}
           labels: ${{ steps.docker_meta.outputs.labels }}
       ### slack notification
