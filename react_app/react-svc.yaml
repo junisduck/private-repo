@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: nginx
+  name: react
   labels:
-    app: nginx-app
+    app: react-app
 spec:
   selector:
-    app: nginx-app
+    app: react-app
   type: LoadBalancer
   ports:
   - port: 80

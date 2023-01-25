@@ -1,19 +1,12 @@
-FROM node:erbium-buster-slim
+FROM node:18-alpine
 
-LABEL "repository"="https://github.com/jun-is-duck/private-repo"
-LABEL "maintainer"="junisduck <junisduck@gmail.com>"
+WORKDIR /app
 
-RUN set -eux ; \
-    apt-get update -y; \
-    apt-get install --no-install-recommends -y \
-    tzdata; \
-    ln -sf /usr/share/zoneinfo/Asia/Seoul /etc/localtime; \
-    mkdir /html; \
-    npm install -g http-server
+COPY ./react-docker/ .
 
-ADD ./index.html /html
+RUN apk update && apk add bash
+RUN npm install
 
-WORKDIR /html
-EXPOSE 80
+EXPOSE 3000
 
-CMD ["http-server", "-p80", "./"]
+CMD [ "npm", "start" ]
