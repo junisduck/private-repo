@@ -8,7 +8,7 @@ COPY ./test/ .
 
 RUN apk update && apk add bash
 RUN npm install -g npm@9.3.1
-RUN cd /app/test/ && npm run build
+RUN pwd
 
 EXPOSE 3000
 
