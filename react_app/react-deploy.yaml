@@ -19,3 +19,5 @@ spec:
         image: junisduck/react_test_image
         ports:
         - containerPort: 80
+      imagePullSecrets:
+      - name : dockersecret
