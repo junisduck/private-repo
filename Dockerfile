@@ -8,7 +8,8 @@ COPY ./test/ .
 
 RUN apk update && apk add bash
 RUN npm install -g npm@9.3.1
-RUN npm install -g serve && serve -n
+RUN npm install -g serve
+RUN serve -n &
 # /app
 RUN ls -al
 #drwxr-xr-x    1 root     root          4096 Feb  1 15:11 .
