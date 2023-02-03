@@ -8,7 +8,7 @@ COPY ./test/ .
 
 RUN apk update && apk add bash
 RUN npm install -g npm@9.3.1
-RUN pwd
+RUN npm install -g serve && serve -n
 # /app
 RUN ls -al
 #drwxr-xr-x    1 root     root          4096 Feb  1 15:11 .
@@ -20,6 +20,6 @@ RUN ls -al
 #drwxr-xr-x    2 root     root          4096 Feb  1 15:11 public
 #drwxr-xr-x    2 root     root          4096 Feb  1 15:11 src
 
-EXPOSE 6386
+EXPOSE 8318
 
 CMD [ "npm", "start" ]
