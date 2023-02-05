@@ -3,7 +3,6 @@ FROM nginx:alpine
 WORKDIR /app
 
 COPY ./test/ .
-COPY ./node_modules/ .
 
 ### /app/test/~
 
