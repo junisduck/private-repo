@@ -20,4 +20,5 @@ RUN mv /app/build/* /usr/share/nginx/html
 
 EXPOSE 8318
 
+ENTRYPOINT ["/docker-entrypoint.sh"]
 CMD [ "serivce", "nginx", "reload" ]
