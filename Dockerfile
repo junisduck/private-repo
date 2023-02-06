@@ -1,27 +1,28 @@
-FROM nginx:latest
+FROM nginx:alpine
+
+COPY ./entrypoint/entrypoint.sh /entrypoint.sh
+
+RUN chmod +x /entrypoint.sh
+
+COPY ./test/ .
+COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
+
+RUN mv /app/build/* /usr/share/nginx/html
 
 WORKDIR /app
 
-COPY ./test/ .
-COPY ./entrypoint/entrypoint.sh /
-
-### /app/test/~
-
-#RUN apk update && apk add bash
-
-RUN apt-get update 
-RUN curl -fsSL https://deb.nodesource.com/setup_19.x | bash - 
-RUN apt-get install -y nodejs
-RUN npm install -g npm@9.3.1
+RUN apk update && apk add bash && apk add curl && apk add nodejs-current npm
 RUN npm run build
 
-# build file move
-COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
-RUN mv /app/build/* /usr/share/nginx/html
+#RUN npm install -g npm@9.3.1
+#RUN apt-get update
+#RUN curl -fsSL https://deb.nodesource.com/setup_19.x | bash -
+#RUN apt-get install -y nodejs
+#RUN npm install -g npm@9.3.1
+#RUN npm run build
 
-RUN chmod 755 /entrypoint.sh
 EXPOSE 8318
 
-ENTRYPOINT ["/docker-entrypoint.sh"]
+CMD [ "service", "nginx", "reload" ]
 
-CMD [ "serivce", "nginx", "reload" ]
+ENTRYPOINT ["/entrypoint.sh"]
