@@ -1,5 +1,7 @@
 FROM nginx:alpine
 
+WORKDIR /app
+
 COPY ./entrypoint/entrypoint.sh /entrypoint.sh
 
 RUN chmod +x /entrypoint.sh
@@ -8,8 +10,6 @@ COPY ./test/ .
 COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
 
 RUN mv /app/build/* /usr/share/nginx/html
-
-WORKDIR /app
 
 RUN apk update && apk add bash && apk add curl && apk add nodejs-current npm
 RUN npm run build
