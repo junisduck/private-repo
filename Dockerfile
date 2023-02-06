@@ -6,8 +6,9 @@ COPY ./test/ .
 
 ### /app/test/~
 
-RUN apk update && apk add bash
-RUN curl -fsSL https://deb.nodesource.com/setup_19.x | bash - && apt-get install -y nodejs
+#RUN apk update && apk add bash
+RUN apt update && apt install bash && apt install curl
+RUN curl -fsSL https://deb.nodesource.com/setup_19.x | bash - && \ apt-get install -y nodejs
 RUN npm install -g npm@9.3.1
 RUN npm run build
 
