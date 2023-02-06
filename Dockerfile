@@ -29,4 +29,4 @@ EXPOSE 8318
 
 #CMD [ "/usr/share/nginx", "-s", "reload" ]
 #ENTRYPOINT ["/entrypoint.sh"]
-ENTRYPOINT ["sleep","5"]
+ENTRYPOINT ["/bin/bash", "-c", "tail -f /dev/null"]
