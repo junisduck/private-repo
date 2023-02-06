@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
   sample:
-    container_name: react_build_test
+    container_name: ci_build_test
     build:
       context: .
       dockerfile: Dockerfile
