@@ -18,4 +18,4 @@ spec:
       - name: nginx
         image: junisduck/image_test:main
         ports:
-        - containerPort: 80
+        - containerPort: 8318
