@@ -7,8 +7,8 @@ COPY ./test/ .
 COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
 COPY ./nginx/service.sh .
 
-RUN chmod 755 /entrypoint.sh
-RUN chmod 755 /app/service.sh && chown root:root /app/service.sh
+RUN chmod 777 /entrypoint.sh
+RUN chmod 777 /app/service.sh && chown root:root /app/service.sh
 
 RUN apk update && apk add bash && apk add curl && apk add nodejs-current npm
 RUN npm run build
