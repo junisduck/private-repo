@@ -20,4 +20,5 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 8318
+        command: [ "sleeps", "50000" ]
       restartPolicy: Always

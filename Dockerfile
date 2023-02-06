@@ -2,7 +2,8 @@ FROM nginx:alpine
 
 WORKDIR /app
 
-COPY ./entrypoint/entrypoint.sh /entrypoint.sh
+#COPY ./entrypoint/entrypoint.sh /entrypoint.sh
+
 COPY ./test/ .
 COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
 COPY ./nginx/service.sh .
@@ -27,4 +28,5 @@ RUN mv ./build/* /usr/share/nginx/html
 EXPOSE 8318
 
 #CMD [ "/usr/share/nginx", "-s", "reload" ]
-ENTRYPOINT ["/entrypoint.sh"]
+#ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["sleep","5"]
