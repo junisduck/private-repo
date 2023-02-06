@@ -23,4 +23,4 @@ EXPOSE 8318
 
 CMD [ "/usr/share/nginx", "-s", "reload" ]
 
-ENTRYPOINT ["/entrypoint.sh"]
+# ENTRYPOINT ["/entrypoint.sh"]
