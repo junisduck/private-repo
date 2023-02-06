@@ -14,6 +14,10 @@ RUN apt-get install -y nodejs
 RUN npm install -g npm@9.3.1
 RUN npm run build
 
+# build file move
+COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
+RUN mv /app/build/* /usr/share/nginx/html
+
 EXPOSE 8318
 
 CMD [ "npm", "start" ]
