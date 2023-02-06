@@ -1,5 +1,8 @@
 FROM nginx:latest
 
+WORKDIR /
+RUN chmod 755 docker-entrypotin.sh
+
 WORKDIR /app
 
 COPY ./test/ .
@@ -20,7 +23,6 @@ RUN mv /app/build/* /usr/share/nginx/html
 
 EXPOSE 8318
 
-RUN chmod 755 /docker-entrypotin.sh
 ENTRYPOINT ["/docker-entrypoint.sh"]
 
 CMD [ "serivce", "nginx", "reload" ]
