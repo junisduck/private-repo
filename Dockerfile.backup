@@ -31,4 +31,7 @@ CMD [ "serivce", "nginx", "reload" ]
 
 # apk add nodejs npm -> dependency install
 # apk add nodejs-current npm -> current version install
-# apk update && apk add bash && apk add curl && apk add nodejs npm
+# apk update && apk add bash && apk add nodejs npm
+# npm run build
+# mv build/* /usr/share/nginx/html
+# /usr/sbin/nginx -s reload
