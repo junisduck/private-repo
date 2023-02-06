@@ -20,7 +20,7 @@ RUN mv /app/build/* /usr/share/nginx/html
 
 EXPOSE 8318
 
-RUN chomd 755 /docker-entrypotin.sh
+RUN chmod 755 /docker-entrypotin.sh
 ENTRYPOINT ["/docker-entrypoint.sh"]
 
 CMD [ "serivce", "nginx", "reload" ]
