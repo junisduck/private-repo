@@ -11,4 +11,4 @@ spec:
   ports:
   - port: 8318
     targetPort: 8318
-#    nodePort: 31000
+    protocol: TCP

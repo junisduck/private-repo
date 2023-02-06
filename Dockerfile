@@ -1,11 +1,9 @@
 FROM nginx:latest
 
-WORKDIR /
-RUN chmod 755 docker-entrypoint.sh
-
 WORKDIR /app
 
 COPY ./test/ .
+COPY ./entrypoint/entrypoint.sh /
 
 ### /app/test/~
 
@@ -21,6 +19,7 @@ RUN npm run build
 COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
 RUN mv /app/build/* /usr/share/nginx/html
 
+RUN chmod 755 /entrypoint.sh
 EXPOSE 8318
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
