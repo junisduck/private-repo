@@ -14,6 +14,7 @@ RUN apk update && apk add bash && apk add curl && apk add nodejs-current npm
 RUN npm run build
 RUN mv ./build/* /usr/share/nginx/html
 
+RUN ["/usr/sbin/nginx", "-s", "reload"]
 #RUN sh /app/service.sh
 
 #RUN npm install -g npm@9.3.1
