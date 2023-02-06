@@ -1,7 +1,7 @@
 FROM nginx:latest
 
 WORKDIR /
-RUN chmod 755 docker-entrypotin.sh
+RUN chmod 755 docker-entrypoint.sh
 
 WORKDIR /app
 
