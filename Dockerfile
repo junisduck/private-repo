@@ -20,4 +20,4 @@ RUN mv /app/build/* /usr/share/nginx/html
 
 EXPOSE 8318
 
-CMD [ "serivce", "nginx", "restart" ]
+CMD [ "serivce", "nginx", "reload" ]
