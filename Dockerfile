@@ -25,5 +25,5 @@ RUN mv ./build/* /usr/share/nginx/html
 
 EXPOSE 8318
 
-CMD [ "/usr/share/nginx", "-s", "reload" ]
+#CMD [ "/usr/share/nginx", "-s", "reload" ]
 ENTRYPOINT ["/entrypoint.sh"]
