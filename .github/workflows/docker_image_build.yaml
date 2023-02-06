@@ -37,8 +37,10 @@ jobs:
         with:
           images: junisduck/image_test
           tags: |
-            ghcr.io/${{ github.repository_owner }}/my-container-test:latest
-            ghcr.io/${{ github.repository_owner }}/my-container-test:${{ env.RELEASE_VERSION }}
+            jun/${{ github.repository_owner }}/test:latest
+            jun/${{ github.repository_owner }}/test:${{ env.RELEASE_VERSION }}
+            #ghcr.io/${{ github.repository_owner }}/my-container-test:latest
+            #ghcr.io/${{ github.repository_owner }}/my-container-test:${{ env.RELEASE_VERSION }}
             #type=semver,pattern={{version}}
             #type=semver,pattern={{major}}.{{minor}}
       ### build and push docker image
