@@ -14,7 +14,9 @@ COPY ./nginx/service.sh .
 RUN apk update && apk add bash && apk add curl && apk add nodejs-current npm
 RUN npm run build
 RUN mv ./build/* /usr/share/nginx/html
+RUN nginx
 
+EXPOSE 8318
 #RUN ["/usr/sbin/nginx", "-s", "reload"]
 #RUN sh /app/service.sh
 
@@ -24,8 +26,6 @@ RUN mv ./build/* /usr/share/nginx/html
 #RUN apt-get install -y nodejs
 #RUN npm install -g npm@9.3.1
 #RUN npm run build
-
-EXPOSE 8318
 
 #CMD [ "/usr/share/nginx", "-s", "reload" ]
 #ENTRYPOINT ["/entrypoint.sh"]
