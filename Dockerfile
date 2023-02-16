@@ -28,5 +28,6 @@ EXPOSE 8318
 #RUN npm run build
 
 #CMD [ "/usr/share/nginx", "-s", "reload" ]
+# 내가 어떤 계정으로 실행할지
 #ENTRYPOINT ["/entrypoint.sh"]
 ENTRYPOINT ["/bin/bash", "-c", "tail -f /dev/null"]
