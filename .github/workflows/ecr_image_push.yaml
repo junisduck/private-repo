@@ -36,11 +36,6 @@ jobs:
         id: build-image
         env:
           IMAGE_TAG: ${{ github.sha }}
-        with:
-          context: .
-          file: ./Dockerfile
-          platforms: linux/amd64
-          push: true
         run: |
           docker build -t ${{ env.REGISTRY }}/${{ env.REGISTRY_ALIAS }}/${{ REPOSITORY }}:$IMAGE_TAG .
           docker push ${{ env.REGISTRY }}/${{ env.REGISTRY_ALIAS }}/${{ REPOSITORY }}:$IMAGE_TAG
