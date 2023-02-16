@@ -36,8 +36,10 @@ jobs:
         id: build-image
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          ECR_REPOSITORY: junrepotest
+          ECR_REPOSITORY: repo
           IMAGE_TAG: ${{ github.sha }}
         run: |
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+          #docker tag ecrtest:latest 613045998053.dkr.ecr.ap-northeast-2.amazonaws.com/repo
+          #docker push 613045998053.dkr.ecr.ap-northeast-2.amazonaws.com/repo
