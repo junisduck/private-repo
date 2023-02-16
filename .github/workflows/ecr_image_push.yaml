@@ -8,7 +8,7 @@ on:
 env:
   AWS_REGION: ap-northeast-2
   ECR_REPOSITORY: junrepotest
-  ECR_REGISTRY: public.ecr.aws/v2u6x5t6/junrepotest
+    #ECR_REGISTRY: public.ecr.aws/v2u6x5t6/junrepotest
   REGISTRY_ALIAS: ECRpush
 
 jobs:
