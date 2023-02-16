@@ -37,5 +37,5 @@ jobs:
         env:
           IMAGE_TAG: ${{ github.sha }}
         run: |
-          docker build -t ${{ env.REGISTRY }}/${{ env.REGISTRY_ALIAS }}/${{ REPOSITORY }}:$IMAGE_TAG .
-          docker push ${{ env.REGISTRY }}/${{ env.REGISTRY_ALIAS }}/${{ REPOSITORY }}:$IMAGE_TAG
+          docker build -t ${{ env.ECR_REGISTRY }}/${{ env.REGISTRY_ALIAS }}/${{ env.ECR_REPOSITORY }}:$IMAGE_TAG .
+          docker push ${{ env.ECR_REGISTRY }}/${{ env.REGISTRY_ALIAS }}/${{ env.ECR_REPOSITORY }}:$IMAGE_TAG
