@@ -9,6 +9,6 @@ spec:
     app: nginx-app
   type: LoadBalancer
   ports:
-  - port: 8318
-    targetPort: 8318
+  - port: 8319
+    targetPort: 8319
     protocol: TCP

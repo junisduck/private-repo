@@ -1,2 +1,3 @@
 #!/bin/bash
-/usr/share/nginx -s reload
+/usr/sbin/nginx -s reload
+nginx
