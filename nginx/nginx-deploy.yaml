@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx-deployment
+  name: nginx-deployment-1234
   labels:
     app: nginx-app
 spec:
@@ -19,5 +19,5 @@ spec:
         image: junisduck/image_test:jun-junisduck-test-latest
         imagePullPolicy: Always
         ports:
-        - containerPort: 8319
+        - containerPort: 8320
       restartPolicy: Always
