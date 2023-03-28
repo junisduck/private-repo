@@ -19,5 +19,5 @@ spec:
         image: junisduck/image_test:jun-junisduck-test-latest
         imagePullPolicy: Always
         ports:
-        - containerPort: 8320
+        - containerPort: 8318
       restartPolicy: Always

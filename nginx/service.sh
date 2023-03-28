@@ -1,2 +1,5 @@
 #!/bin/bash
-/usr/sbin/nginx -s reload
+echo nginx
+#/usr/sbin/nginx -s reload
+nginx &
+/bin/bash
