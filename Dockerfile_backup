@@ -17,10 +17,9 @@ RUN mv ./build/* /usr/share/nginx/html
 
 EXPOSE 8318
 
-#CMD [ "nginx", "-g", "daemon off;"]
-#CMD ["/app/service.sh"]
+CMD [ "nginx", "-g", "daemon off;"]
 
-ENTRYPOINT ["/app/service.sh"]
+#ENTRYPOINT ["nginx", "-g", "daemon off;"]
 
 #CMD [ "nginx" ]
 

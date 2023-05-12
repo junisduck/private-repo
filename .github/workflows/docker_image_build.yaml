@@ -17,6 +17,10 @@ jobs:
       -
         name: Checkout
         uses: actions/checkout@v3
+      ### image tag number
+      -
+        name: Set env
+        run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/v}" >> $GITHUB_ENV"
       ### docker hub login 
       -
         name: Login to DockerHub
@@ -39,6 +43,7 @@ jobs:
           tags: |
             jun/${{ github.repository_owner }}/test:latest
             jun/${{ github.repository_owner }}/test:${{ env.RELEASE_VERSION }}
+            #${{ github.repository_owner }}/t:${{ env.RELEASE_VERSION }}
             #ghcr.io/${{ github.repository_owner }}/my-container-test:latest
             #ghcr.io/${{ github.repository_owner }}/my-container-test:${{ env.RELEASE_VERSION }}
             #type=semver,pattern={{version}}

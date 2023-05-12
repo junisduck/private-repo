@@ -2,14 +2,12 @@ FROM nginx:alpine
 
 WORKDIR /app
 
-#COPY ./entrypoint/entrypoint.sh /entrypoint.sh
-
+COPY ./entrypoint/entrypoint.sh /entrypoint.sh
 COPY ./test/ .
 COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
 COPY ./nginx/service.sh .
 
-#RUN chmod 777 /entrypoint.sh
-#RUN chmod 777 /app/service.sh && chown root:root /app/service.sh
+RUN chmod 777 /entrypoint.sh && chmod 777 /app/service.sh && chown root:root /app/service.sh
 
 RUN apk update && apk add bash && apk add curl && apk add nodejs-current npm
 RUN npm run build
@@ -17,26 +15,5 @@ RUN mv ./build/* /usr/share/nginx/html
 
 EXPOSE 8318
 
-CMD [ "nginx", "-g", "daemon off;"]
-
-#ENTRYPOINT ["nginx", "-g", "daemon off;"]
-
-#CMD [ "nginx" ]
-
-#RUN ["/usr/sbin/nginx", "-s", "reload"]
-#RUN sh /app/service.sh
-
-#RUN npm install -g npm@9.3.1
-#RUN apt-get update
-#RUN curl -fsSL https://deb.nodesource.com/setup_19.x | bash -
-#RUN apt-get install -y nodejs
-#RUN npm install -g npm@9.3.1
-#RUN npm run build
-
-#CMD [ "/usr/share/nginx", "-s", "reload" ]
-# 내가 어떤 계정으로 실행할지
-#ENTRYPOINT ["/docker-entrypoint.sh"]
-#ENTRYPOINT ["nginx"]
-#ENTRYPOINT ["/bin/bash", "-c", "tail -f /dev/null"]
-#CMD [ "nginx", "-g", "daemon off;" ]
-#ENTRYPOINT ["nginx", "-g", "deamon off;"]
+ENTRYPOINT ["/entrypoint.sh", "/usr/sbin/nginx"]
+CMD ["-g", "daemon off;"]
