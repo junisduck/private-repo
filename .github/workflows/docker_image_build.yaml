@@ -7,6 +7,8 @@ on:
   push:
     branches:
       - 'main'
+    tags:
+      - 'v*'
 
 #작업에 대한 정의
 jobs:
@@ -41,7 +43,7 @@ jobs:
         with:
           images: junisduck/image_test
           tags: |
-            ${{ github.repository_owner }}:${{ env.GITHUB_ENV }}
+            ${{ github.repository_owner }}:${{ env.RELEASE_VERSION }}
             #jun/${{ github.repository_owner }}/test:latest
             #jun/${{ github.repository_owner }}/test:${{ env.RELEASE_VERSION }}
             #${{ github.repository_owner }}/t:${{ env.RELEASE_VERSION }}
