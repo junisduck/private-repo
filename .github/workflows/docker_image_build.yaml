@@ -20,7 +20,7 @@ jobs:
       ### image tag number
       -
         name: Set env
-        run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/v}" >> $GITHUB_ENV"
+        run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/v}" >> $GITHUB_ENV
       ### docker hub login 
       -
         name: Login to DockerHub
