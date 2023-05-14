@@ -44,20 +44,20 @@ jobs:
           images: junisduck/image_test
           tags: |
             ${{ github.repository_owner }}:${{ env.RELEASE_VERSION }}
-            #jun/${{ github.repository_owner }}/test:latest
-            #jun/${{ github.repository_owner }}/test:${{ env.RELEASE_VERSION }}
+            type=semver,pattern={{major}}.{{minor}}
             #${{ github.repository_owner }}/t:${{ env.RELEASE_VERSION }}
             #ghcr.io/${{ github.repository_owner }}/my-container-test:latest
             #ghcr.io/${{ github.repository_owner }}/my-container-test:${{ env.RELEASE_VERSION }}
             #type=semver,pattern={{version}}
-            #type=semver,pattern={{major}}.{{minor}}
       ### build and push docker image
       -
         name: Build and push
         uses: docker/build-push-action@v4
         with:
           context: .
-          file: ./Dockerfile
+          files: |
+            ./Dockerfile
+            ${{ steps.meta.outputs.bake-file }}
           platforms: linux/amd64
           push: true
           tags: ${{ steps.docker_meta.outputs.tags }}
