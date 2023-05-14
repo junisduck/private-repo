@@ -41,8 +41,9 @@ jobs:
         with:
           images: junisduck/image_test
           tags: |
-            jun/${{ github.repository_owner }}/test:latest
-            jun/${{ github.repository_owner }}/test:${{ env.RELEASE_VERSION }}
+            ${{ github.repository_owner }}:${{ env.GITHUB_ENV }}
+            #jun/${{ github.repository_owner }}/test:latest
+            #jun/${{ github.repository_owner }}/test:${{ env.RELEASE_VERSION }}
             #${{ github.repository_owner }}/t:${{ env.RELEASE_VERSION }}
             #ghcr.io/${{ github.repository_owner }}/my-container-test:latest
             #ghcr.io/${{ github.repository_owner }}/my-container-test:${{ env.RELEASE_VERSION }}
