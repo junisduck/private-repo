@@ -16,8 +16,7 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: junisduck/image_test:jun-junisduck-test-latest
-          #image: junisduck/image_test:junisduck-t-
+        image: junisduck/image_test:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 8318
