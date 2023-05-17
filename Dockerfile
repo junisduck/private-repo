@@ -1,17 +1,16 @@
-FROM nginx:alpine
+FROM alpine:latest
 
 WORKDIR /app
 
 COPY ./entrypoint/entrypoint.sh /entrypoint.sh
 COPY ./test/ .
-COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
-COPY ./nginx/service.sh .
+COPY ./nginx/default.conf /etc/nginx/http.d/default.conf
 
-RUN chmod 777 /entrypoint.sh && chmod 777 /app/service.sh && chown root:root /app/service.sh
+RUN chmod 777 /entrypoint.sh
 
-RUN apk update && apk add bash && apk add curl && apk add nodejs-current npm
+RUN apk update && apk add bash && apk add curl && apk add nginx && apk add nodejs-current npm
 RUN npm run build
-RUN mv ./build/* /usr/share/nginx/html
+RUN mv ./build/ /usr/share/nginx/html
 
 EXPOSE 8318
 
