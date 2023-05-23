@@ -6,11 +6,11 @@ kind: ClusterConfig
 
 metadata:
   name: jeks # 생성할 EKS 클러스터명
-  region: ap-northeast-2 # 클러스터를 생성할 리전
+  region: ap-northeast-1 # 클러스터를 생성할 리전
   version: "1.25"
 
 vpc:
-  cidr: "10.0.0.0/16" # 클러스터에서 사용할 VPC의 CIDR
+  cidr: "10.0.0.0/24" # 클러스터에서 사용할 VPC의 CIDR
   nat:
     gateway: HighlyAvailable
 
