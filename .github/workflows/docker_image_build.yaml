@@ -5,8 +5,8 @@ name: Docker hub image build
 # workflow에서 작업이 실행되는 조건 (push, pull, ...)
 on:
   push:
-    #branches:
-    #  - 'main'
+    branches:
+      - 'dev'
     tags:
       - 'v*'
 
