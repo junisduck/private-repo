@@ -5,7 +5,12 @@
 4. git commit -m ${comment}
 5. git tag v1.x.x
 6. git push origin dev:main
+7. git checkout main
+8. git merge dev
+9. git push origin ${tag}
 
+
+....
 5. git tag v1.0.11
 5. git push origin v1.0.11
 6. git checkout main
