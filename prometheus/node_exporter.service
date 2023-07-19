@@ -1,0 +1,12 @@
+#!/sbin/openrc-run
+
+description="Node Exporter"
+command="/usr/bin/node_exporter"
+command_background="yes"
+pidfile="/run/$name.pid"
+command_user="root"
+
+depend() {
+    need net
+    use dns logger
+}
