@@ -1,0 +1,55 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: nginx-rollout
+spec:
+  replicas: 3
+  revisionHistoryLimit: 2
+  selector:
+    matchLabels:
+      app: nginx-app
+  template:
+    metadata:
+      labels:
+        app: nginx-app
+    spec:
+      containers:
+      - name: nginx
+        image: junisduck/image_test:latest
+        #image: junisduck/image_test:junisduck-1.0.16
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8318
+  strategy:
+    blueGreen:
+      activeService: nginx-rollout-active
+      previewService: nginx-rollout-preview
+      autoPromotionEnabled: false
+
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: nginx-rollout-active
+spec:
+  selector:
+    app: nginx-app
+  type: LoadBalancer
+  ports:
+  - protocol: TCP
+    port: 8318
+    targetPort: 8318
+
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: nginx-rollout-preview
+spec:
+  selector:
+    app: nginx-app
+  type: LoadBalancer
+  ports:
+  - protocol: TCP
+    port: 8318
+    targetPort: 8318

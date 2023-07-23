@@ -1,10 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: jun-nginx-ingress
+  name: nginx-deployment-1234
   labels:
     app: nginx-app
-  namespace: nginx-app
 spec:
   replicas: 2
   selector:
@@ -22,17 +21,3 @@ spec:
         ports:
         - containerPort: 8318
       restartPolicy: Always
----
-
-apiVersion: v1
-kind: Service
-metadata:
-  name: jun-nginx-ingress
-  namespace: nginx-app
-spec:
-  ports:
-  - name: nginx-svc-port
-    port: 8318
-    targetPort: 8318
-  selector:
-    app: nginx-app

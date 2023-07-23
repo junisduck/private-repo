@@ -1,14 +1,21 @@
-apiVersion: v1
-kind: Service
+apiVersion: networking.k8s.io/v1
+kind: Ingress
 metadata:
-  name: nginx
+  name: jun-nginx-ingress
+  namespace: nginx-app
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+    kubernetes.io/ingress.class: "nginx" # 사용할 Ingress Controller
   labels:
     app: nginx-app
 spec:
-  selector:
-    app: nginx-app
-  type: LoadBalancer
-  ports:
-  - port: 8318
-    targetPort: 8318
-    protocol: TCP
+  rules:
+  - http:
+      paths:
+        - path: /nginx
+          pathType: Prefix
+          backend:
+            service:
+              name: jun-nginx-ingress
+              port:
+                number: 8318
