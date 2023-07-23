@@ -20,3 +20,4 @@ RUN rc-service node_exporter start && rc-service nginx start
 EXPOSE 8318
 
 ENTRYPOINT ["/entrypoint.sh", "/sbin/init"]
+# tttt
