@@ -9,16 +9,16 @@
 8. git merge dev
 9. git push origin ${tag}
 
-
-....
-5. git tag v1.0.11
-5. git push origin v1.0.11
-6. git checkout main
-7. git merge v1.0.11
-8. git push origin main
-
 # image build 
 1. git push
 2. git action (trigger)
 3. docker iamge build (docker buildx)
 4. docker image save to docker hub
+
+# EKS
+1. kubectl apply -f ./eks/ingress/ingress-nginx/ingress.yaml
+2. kubectl apply -f ./eks/ingress/ingress-nginx/deploy.yaml
+3. kubectl apply -f ./eks/ingress/ingress-nginx/jun-service,deploy1.yaml
+4. kubectl apply -f ./eks/ingress/ingress-nginx/jun-service,deploy2.yaml
+5. kubectl get ingress --all-namespaces
+6. curl http://192.168.49.2/jun1
