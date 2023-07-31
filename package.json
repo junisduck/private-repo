@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/junisduck/private-repo/issues"
   },
-  "homepage": "https://github.com/junisduck/private-repo#readme"
+  "homepage": "https://github.com/junisduck/private-repo#readme",
+  "dependencies": {
+    "nice-try": "^3.0.1"
+  }
 }
