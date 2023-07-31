@@ -8,7 +8,7 @@ COPY ./nginx/config/default.conf /etc/nginx/http.d/default.conf
 
 RUN chmod 777 /entrypoint.sh
 
-RUN apk update && apk add bash && apk add curl && apk add nginx && apk add nodejs-current npm
+RUN apk update && apk add bash && apk add curl && apk add nginx && apk add nodejs npm
 RUN npm install
 RUN npm run build
 RUN mv ./build/ /usr/share/nginx/html
