@@ -14,10 +14,12 @@ spec:
     metadata:
       labels:
         app: nginx-app
+          #annotations:
+            #linkerd.io/inject: enabled
     spec:
       containers:
       - name: nginx
-        image: junisduck/image_test:latest
+        image: nginx:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 8318
