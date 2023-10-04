@@ -1,8 +1,29 @@
-1: int main(int argc, const char *argv[]) {
-2: char *temp;
-3: temp = (char *)malloc(BUFFER_SIZE);
-4: ……
-5: free(temp);
-6: //해제한 자원을 사용하고 있어 의도하지 않은 결과가 발생하게 된다.
-7: stmcpy(temp, argv[1], BUFFER_SIZE-1);
-8: }
+#define FAIL 0
+#define SUCCESS 1
+#define ERROR -1
+#define MAX_MESSAGE_SIZE 32
+
+int processMessage(char **message){
+	int result = SUCCESS;
+	int length = getMessageLength(message[0]);
+	char *messageBody;
+
+	if ((length > 0) && (length < MAX_MESSAGE_SIZE)){
+		messageBody = (char*)malloc(length*sizeof(char));
+		messageBody = &message[1][0];
+		int success = processMessageBody(messageBody);
+
+		if (success == ERROR){
+			result = ERROR;
+			free(messageBody);
+		}
+	}
+	else {
+		printf(“Unable to process message; invalid message length”);
+		result = FAIL;
+	}
+	if (result == ERROR){
+		logError(“Error processing message”, messageBody);
+	}
+ 	return result;
+}
