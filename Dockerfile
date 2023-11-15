@@ -3,7 +3,7 @@ FROM python:3.11.6-alpine3.18
 WORKDIR /app
 
 COPY ./entrypoint/entrypoint.sh /entrypoint.sh
-COPY ./test/ .
+COPY ./jun-app/ .
 COPY ./nginx/config/default.conf /etc/nginx/http.d/default.conf
 
 RUN chmod 777 /entrypoint.sh
