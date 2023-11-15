@@ -10,7 +10,6 @@ RUN chmod 777 /entrypoint.sh
 
 RUN apk update && apk add bash && apk add curl && apk add nginx && apk add nodejs npm
 RUN npm install
-RUN npm run 
 RUN npm run build
 RUN mv ./build/ /usr/share/nginx/html
 
