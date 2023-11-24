@@ -1,0 +1,23 @@
+FROM alpine:latest
+
+# Node Exporter 설치
+COPY ./prometheus/node_exporter/node_exporter /usr/bin/node_exporter
+COPY ./prometheus/node_exporter.service /etc/init.d/node_exporter
+RUN chmod +x /usr/bin/node_exporter /etc/init.d/node_exporter
+
+# Nginx 설치 및 설정
+RUN apk update && apk add bash curl nginx nodejs-current npm
+COPY ./entrypoint/entrypoint.sh /entrypoint.sh
+COPY ./test/ .
+COPY ./nginx/config/default.conf /etc/nginx/http.d/default.conf
+RUN chmod 777 /entrypoint.sh && npm run build && run mv ./build/ /usr/share/nginx/html
+
+# 서비스 등록 및 시작
+RUN apk add openrc && openrc && touch /run/openrc/softlevel && rc-status
+RUN rc-update add node_exporter default && rc-update add nginx default
+RUN rc-service node_exporter start && rc-service nginx start
+
+EXPOSE 8318
+
+ENTRYPOINT ["/entrypoint.sh", "/sbin/init"]
+# tttt
