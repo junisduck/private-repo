@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM alpine:3.20
 
 COPY ./node_exporter/node_exporter /usr/bin/node_exporter
 COPY ./node_exporter.service /etc/init.d/node_exporter
